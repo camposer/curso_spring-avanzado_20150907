@@ -7,8 +7,8 @@ import gui.CalculadoraGui;
 @ComponentScan(basePackages = { "service", "gui" })
 public class AppJavaConfig2 {
 	public static void main(String[] args) {
-		AbstractApplicationContext ctx = new AnnotationConfigApplicationContext(AppJavaConfig2.class);
-		ctx.getBean(CalculadoraGui.class).iniciar();
-		ctx.close();
+		try (AbstractApplicationContext ctx = new AnnotationConfigApplicationContext(AppJavaConfig2.class)) {
+			ctx.getBean(CalculadoraGui.class).iniciar();
+		}
 	}
 }

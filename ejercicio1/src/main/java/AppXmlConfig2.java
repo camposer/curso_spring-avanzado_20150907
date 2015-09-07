@@ -5,8 +5,8 @@ import gui.CalculadoraGui;
 
 public class AppXmlConfig2 {
 	public static void main(String[] args) {
-		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext2.xml");
-		ctx.getBean(CalculadoraGui.class).iniciar();
-		ctx.close();
+		try (AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext2.xml")) {
+			ctx.getBean(CalculadoraGui.class).iniciar();
+		}
 	}
 }
