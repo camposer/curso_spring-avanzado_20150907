@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean id="holaMundo1" 
+			class="basico.basico.HolaMundoImpl">
+		<property name="nombre" value="Juan"/>	
+	</bean>
+
+	<bean id="holaMundo2" 
+			class="basico.basico.HolaMundoImpl"
+			scope="prototype">
+		<property name="nombre" value="Juan"/>	
+	</bean>
+	
+	<bean id="myWrapper" 
+			class="basico.basico.Wrapper">
+		<constructor-arg name="message" value="Hello María"/>	
+	</bean>	
+	
+	<bean id="helloWorld" 
+			class="basico.basico.HelloWorldImpl"
+			scope="prototype">
+		<property name="wrapper" ref="myWrapper"/>		
+	</bean>
+</beans>
