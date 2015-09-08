@@ -16,7 +16,7 @@ public class Ordenador implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(insertable=false, updatable=false, unique=true, nullable=false)
+	@Column(unique=true, nullable=false)
 	private Integer id;
 
 	@Column(nullable=false, length=50)
