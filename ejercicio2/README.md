@@ -1,31 +1,28 @@
 #Ejercicio2
 
-1. Generar el modelo a partir de la BD (ejercicio2.sql)
-	- Cumplimentar fichero classpath:META-INF/persistence.xml
+1. Implementar una GUI por consola que permita realizar las operaciones básicas sobre la entidad persona, a saber: agregar, modificar, eliminar y listar.
 
-2. Implementar los DAO y Servicios correspondientes a los modelos: persona y ordenador.
-	- Agregar configuraciones de acceso a datos (entityManager, entityManagerFactory, transactionManager)
-	- Agregar implementación genérica de DAO. Debe inyectar el entityManager y agregar la anotación @PersistenceContext
-	- Implementar PersonaDaoImpl (con su interfaz correspondiente)
-	- Implementar PersonaServiceImpl (con su interfaz correspondiente)
+IMPORTANTE: Plantear la arquitectura de la aplicación en capas, es decir: crear PersonaService y PersonaDao, además de las clases utilitarias necesarias.
 
-3. Completar la prueba de PersonaDao. Añadir: modificar, eliminar, obtener y listar. Puede guiarse con la prueba anterior. Importante: familiarizarse con el POM y la clase JpaConfig (@EnableTransactionManagement)
+A continuación un ejemplo de cómo puede realizar la interfaz:
 
-4. Implementar el CRUD+ para Persona
-	- Implementar la lista (+) de personas (acción: /persona/inicio.do)
-	- Implementar el agregar (C) de personas
-	- Implementar el eliminar (D) de personas. Si tiene ordenadores asociados, estos deben borrarse previamente de forma automática.
-	- Implementar el mostrar (R) de personas
-	- Implementar el modificar (U) de personas
-	- Agregar al listado de personas, una columna que muestre los ordenadores que cada una tiene. Para ver este comportamiento tendrá que agregar algunos ordenadores a la BD
+```
+1. Agregar
+2. Modificar
+3. Eliminar
+4. Listar
+? 1
 
-NOTA: Para ejecutar: http://localhost:8080/ejercicio2/persona/inicio.do
+Nombre? Juan
+Apellido? Pérez
+Fecha de Nacimiento? 2010-01-01
 
-5. Implementar el CRUD+ para Ordenador. Seguir el mismo orden de implementación aplicado en CRUD+ de Persona.
-	- BD
-	- Modelo
-	- DAO
-	- Servicio
-	- Front
+1. Agregar
+2. Modificar
+3. Eliminar
+4. Listar
+? 4
 
-6. Implementar API REST para Persona y Ordenador
+[ id = 1, nombre = Juan, apellido  = Pérez, fecha de nacimiento = 2010-01-01 ]
+```
+
