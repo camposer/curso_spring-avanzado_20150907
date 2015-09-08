@@ -1,0 +1,19 @@
+Cómo configurar proyecto Maven en Eclipse (sin usar arquetipo)
+==============================================================
+
+Dentro del nuevo proyecto (ejercicio3):
+
+1. Crear las carpetas:
+	- src/main/java
+	- src/main/resources
+	- src/main/webapp
+	- src/test/java
+	- src/test/resources
+
+2. En las propiedades del proyecto. Java Build Path -> Java Source -> Eliminar "src" y agregar cada una de las carpetas creadas (excepto webapp)
+
+3. Clic derecho sobre el proyecto. Configure -> Convert to Maven Project
+
+4. Agregar al POM las dependencias del ejercicio2 (con sus propiedades)
+
+5. Verificar que en propiedades del proyecto. Deployment Assembly está seleccionada la carpeta src/main/webapp, sino agregarla!
