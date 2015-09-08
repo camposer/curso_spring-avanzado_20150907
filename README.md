@@ -33,6 +33,7 @@ Curso de Spring Avanzado
 	- http://blog.2partsmagic.com/restful-uri-design/
 - Curso de Testing (con Spring)
 	- https://github.com/camposer/curso_testing
+	- http://www.captaindebug.com/2012/08/using-spring-profiles-and-java.html#.Ve6-ybOvBxB
 - JUnit (incluye ejemplos, etc)
 	- http://junit.org/
 - Scaling Agile @ Spotify
