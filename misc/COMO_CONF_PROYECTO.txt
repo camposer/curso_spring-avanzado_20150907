@@ -10,7 +10,7 @@ Dentro del nuevo proyecto (ejercicio3):
 	- src/test/java
 	- src/test/resources
 
-2. En las propiedades del proyecto. Java Build Path -> Java Source -> Eliminar "src" y agregar cada una de las carpetas creadas (excepto webapp)
+2. En las propiedades del proyecto. Java Build Path -> Source -> Eliminar "src" y agregar cada una de las carpetas creadas (excepto webapp)
 
 3. Verificar que en propiedades del proyecto. Deployment Assembly están activas únicamente las siguientes entradas:
 src/main/java => /WEB-INF/classes
