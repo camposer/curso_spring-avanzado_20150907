@@ -54,6 +54,7 @@
 	</c:if>
 	
 	<form action="guardar.do" method="post">
+		<input type="hidden" name="id" value="${personaForm.id}">
 		<table id="tabla-form" class="tabla-centrada">
 			<tr>
 				<td>Nombre</td>
@@ -96,8 +97,12 @@
 					<td>${p.nombre}</td>
 					<td>${p.apellido}</td>
 					<td>${p.fechaNacimiento}</td>
-					<td><a href="#">mostrar</a></td>
-					<td><a href="#">eliminar</a></td>
+					<td><a href="mostrar.do?id=${p.id}">mostrar</a></td>
+					<td>
+						<a href="eliminar.do?id=${p.id}" onclick="return confirm('Eliminar?')" >
+							eliminar
+						</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
