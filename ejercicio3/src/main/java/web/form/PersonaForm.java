@@ -1,10 +1,16 @@
 package web.form;
 
+import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+
 public class PersonaForm {
 	private Integer id;
+	@NotNull
 	private String nombre;
+	@NotNull
 	private String apellido;
-	private String fechaNacimiento;
+	private Date fechaNacimiento;
 
 	public Integer getId() {
 		return id;
@@ -24,10 +30,10 @@ public class PersonaForm {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 }

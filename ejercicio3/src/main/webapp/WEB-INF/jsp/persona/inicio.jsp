@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,23 +54,26 @@
 		</div>
 	</c:if>
 	
-	<form action="guardar.do" method="post">
-		<input type="hidden" name="id" value="${personaForm.id}">
+	
+	<form:form action="guardar.do" method="post" commandName="personaForm">
+		<form:errors path="*" cssClass="errores"></form:errors>
+	
+		<form:hidden path="id"/>
 		<table id="tabla-form" class="tabla-centrada">
 			<tr>
 				<td>Nombre</td>
-				<td><input type="text" name="nombre" value="${personaForm.nombre}"></td>
+				<td><form:input path="nombre"/></td>
 			</tr>
 			<tr>
 				<td>Apellido</td>
-				<td><input type="text" name="apellido" value="${personaForm.apellido}"></td>
+				<td><form:input path="apellido"/></td>
 			</tr>
 			<tr>
 				<td>
 					Fecha de nacimiento<br>
 					(Ej. 2012-01-01)
 				</td>
-				<td><input type="text" name="fechaNacimiento" value="${personaForm.fechaNacimiento}"></td>
+				<td><form:input path="fechaNacimiento"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -77,7 +81,7 @@
 				</td>
 			</tr>
 		</table>
-	</form>
+	</form:form>
 	<hr>
 	<table class="tabla-centrada tabla-datos">
 		<thead>

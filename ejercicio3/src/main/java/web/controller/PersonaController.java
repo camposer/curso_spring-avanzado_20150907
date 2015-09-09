@@ -1,19 +1,28 @@
 package web.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Persona;
 import service.PersonaService;
+import web.editor.DateEditor;
 import web.form.PersonaForm;
+import web.validator.PersonaFormValidator;
 
 @Controller
 @RequestMapping("/persona*")
@@ -24,6 +33,21 @@ public class PersonaController {
 	private PersonaService personaService;
 	@Autowired
 	private ModelMapper modelMapper;
+	@Autowired
+	private DateEditor dateEditor;
+	@Autowired
+	private PersonaFormValidator personaFormValidator;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Date.class, dateEditor);
+		binder.addValidators(personaFormValidator);
+	}
+	
+	@ModelAttribute("personaForm")
+	public PersonaForm getPersonaForm() {
+		return new PersonaForm();
+	}
 	
 	private void init(Model model) {
 		model.addAttribute("personas", personaService.obtenerPersonas());
@@ -36,18 +60,12 @@ public class PersonaController {
 	}
 
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
-	public String guardar(PersonaForm personaForm, Model model) {
-		List<String> errores = new ArrayList<>();
+	public String guardar(
+			Model model,
+			@Valid @ModelAttribute("personaForm") PersonaForm personaForm, 
+			BindingResult result) {
 		
-		if (personaForm.getNombre() == null || 
-				personaForm.getNombre().trim().equals(""))
-			errores.add("Nombre inválido");
-		
-		if (personaForm.getApellido() == null || 
-				personaForm.getApellido().trim().equals(""))
-			errores.add("Apellido inválido");
-
-		if (errores.size() == 0) {
+		if (!result.hasErrors()) {
 			try {
 				Persona p = modelMapper.map(personaForm, Persona.class);
 				
@@ -57,16 +75,14 @@ public class PersonaController {
 					personaService.agregarPersona(p);
 			} catch (Exception e) {
 				e.printStackTrace();
-				errores.add("Error al guardar en BD");
+				result.rejectValue("bd", null, "Error al guardar en la BD");
 			}
 		}
 		
-		if (errores.size() == 0)
+		if (!result.hasErrors())
 			return "redirect:/persona/inicio.do";
 		else {
 			init(model);
-			model.addAttribute("errores", errores);
-			model.addAttribute("personaForm", personaForm);
 			return RUTA_JSP;
 		}
 	}
@@ -97,7 +113,9 @@ public class PersonaController {
 		
 		try {
 			Persona p = personaService.obtenerPersona(id);
-			model.addAttribute(modelMapper.map(p, PersonaForm.class));
+			model.addAttribute(
+					"personaForm",
+					modelMapper.map(p, PersonaForm.class));
 		} catch (Exception e) {
 			e.printStackTrace();
 			errores.add("Error al consultar persona de la BD");
