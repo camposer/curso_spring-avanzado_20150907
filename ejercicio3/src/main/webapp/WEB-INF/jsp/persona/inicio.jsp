@@ -64,7 +64,10 @@
 				<td><input type="text" name="apellido" value="${personaForm.apellido}"></td>
 			</tr>
 			<tr>
-				<td>Fecha de nacimiento</td>
+				<td>
+					Fecha de nacimiento<br>
+					(Ej. 2012-01-01)
+				</td>
 				<td><input type="text" name="fechaNacimiento" value="${personaForm.fechaNacimiento}"></td>
 			</tr>
 			<tr>

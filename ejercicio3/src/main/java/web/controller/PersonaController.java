@@ -1,6 +1,5 @@
 package web.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,12 +48,7 @@ public class PersonaController {
 
 		if (errores.size() == 0) {
 			try {
-				String fechaNacimiento = personaForm.getFechaNacimiento();
-				personaForm.setFechaNacimiento(null);
-				
 				Persona p = modelMapper.map(personaForm, Persona.class);
-				p.setFechaNacimiento(new SimpleDateFormat("yyyy-MM-dd").parse(fechaNacimiento));
-				
 				personaService.agregarPersona(p);
 			} catch (Exception e) {
 				e.printStackTrace();
