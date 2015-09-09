@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class DatabaseConfig {
 	@Bean
-	//@Profile("prod")
+	@Profile("prod")
 	public EntityManagerFactory entityManagerFactory() {
 		return Persistence
 				.createEntityManagerFactory("ejercicio2");
