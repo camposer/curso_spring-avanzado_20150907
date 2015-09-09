@@ -62,12 +62,25 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<!-- Web -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Util -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>0.7.5</version>
 		</dependency>
 	</dependencies>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +31,9 @@
 		.tabla-datos a {
 			color: black;
 		}
+		.errores {
+			background-color: red;
+		}
 		
 		#tabla-form tr:last-child td {
 			text-align: center;
@@ -38,19 +42,30 @@
 </head>
 <body>
 	<h1>Personas</h1>
-	<form>
+	
+	<c:if test="${!empty errores}">
+		<div class="errores">
+			<ul>
+				<c:forEach var="e" items="${errores}">
+					<li>${e}</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
+	
+	<form action="guardar.do" method="post">
 		<table id="tabla-form" class="tabla-centrada">
 			<tr>
 				<td>Nombre</td>
-				<td><input type="text" name="nombre"></td>
+				<td><input type="text" name="nombre" value="${personaForm.nombre}"></td>
 			</tr>
 			<tr>
 				<td>Apellido</td>
-				<td><input type="text" name="apellido"></td>
+				<td><input type="text" name="apellido" value="${personaForm.apellido}"></td>
 			</tr>
 			<tr>
 				<td>Fecha de nacimiento</td>
-				<td><input type="text" name="fechaNacimiento"></td>
+				<td><input type="text" name="fechaNacimiento" value="${personaForm.fechaNacimiento}"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -72,30 +87,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>xxx</td>
-				<td>xxx</td>
-				<td>xxx</td>
-				<td><a href="#">mostrar</a></td>
-				<td><a href="#">eliminar</a></td>
-			</tr>		
-			<tr>
-				<td>2</td>
-				<td>xxx</td>
-				<td>xxx</td>
-				<td>xxx</td>
-				<td><a href="#">mostrar</a></td>
-				<td><a href="#">eliminar</a></td>
-			</tr>		
-			<tr>
-				<td>3</td>
-				<td>xxx</td>
-				<td>xxx</td>
-				<td>xxx</td>
-				<td><a href="#">mostrar</a></td>
-				<td><a href="#">eliminar</a></td>
-			</tr>		
+			<c:forEach var="p" items="${personas}">
+				<tr>
+					<td>${p.id}</td>
+					<td>${p.nombre}</td>
+					<td>${p.apellido}</td>
+					<td>${p.fechaNacimiento}</td>
+					<td><a href="#">mostrar</a></td>
+					<td><a href="#">eliminar</a></td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 
