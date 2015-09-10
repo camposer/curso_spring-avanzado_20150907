@@ -1,11 +1,14 @@
 package rest.controller;
 
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import model.Persona;
+import rest.editor.DateEditor;
 import rest.to.GetPersonasResponse;
 import rest.to.PostPersonaRequest;
 import rest.to.PutPersonaRequest;
@@ -26,6 +30,13 @@ public class PersonaRestController {
 	private PersonaService personaService;
 	@Autowired
 	private ModelMapper modelMapper;
+	@Autowired
+	private DateEditor dateEditor;	
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Date.class, dateEditor);
+	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody GetPersonasResponse obtenerPersonas() {
@@ -48,7 +59,7 @@ public class PersonaRestController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public void agregar(
+	public void modificar(
 			@PathVariable Integer id,
 			@RequestBody PutPersonaRequest request) {
 		Persona p = modelMapper.map(request, Persona.class);
