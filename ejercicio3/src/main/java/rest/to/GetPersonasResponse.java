@@ -1,18 +1,19 @@
 package rest.to;
 
-public class GetPersonasResponse {
-	private Status status;
-	private Object data;
+import java.util.List;
+
+public class GetPersonasResponse extends Response {
 	
-	public static enum Status  {
-		SUCCESS, ERROR;
+	public GetPersonasResponse(List<Persona> personas) {
+		super(Response.Status.SUCCESS);
+		super.setData(personas);
 	}
 	
 	public static class Persona {
 		private Integer id;
 		private String nombre;
 		private String apellido;
-		
+
 		public Integer getId() {
 			return id;
 		}
@@ -31,25 +32,5 @@ public class GetPersonasResponse {
 		public void setApellido(String apellido) {
 			this.apellido = apellido;
 		}
-	}
-	
-	public GetPersonasResponse() {
-		this.status = Status.SUCCESS;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
-	public Object getData() {
-		return data;
-	}
-
-	public void setData(Object data) {
-		this.data = data;
 	}
 }
