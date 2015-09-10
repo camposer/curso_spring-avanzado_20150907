@@ -14,6 +14,7 @@
 	<ul>
 		<li><a href="persona/inicio.do">Persona</a></li>
 		<li><a href="ordenador/inicio.do">Ordenador</a></li>
+		<li><a href="ajax.html">Tester AJAX</a></li>
 	</ul>
 </body>
 </html>

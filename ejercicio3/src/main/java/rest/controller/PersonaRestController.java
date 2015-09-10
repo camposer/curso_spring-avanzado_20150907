@@ -7,7 +7,6 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +43,7 @@ public class PersonaRestController {
 	 * Accept: application/json
 	 */
 	@RequestMapping(method = RequestMethod.GET,
-			produces = {MediaType.APPLICATION_JSON_VALUE})
+			produces = {"application/json", "text/xml"})
 	public @ResponseBody GetPersonasResponse obtenerPersonas() {
 		Type listType = new TypeToken<List<GetPersonasResponse.Persona>>() {}.getType();
 		List<GetPersonasResponse.Persona> personas = 
