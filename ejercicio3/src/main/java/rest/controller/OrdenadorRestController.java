@@ -34,7 +34,7 @@ public class OrdenadorRestController {
 	@RequestMapping(method = RequestMethod.GET,
 			produces = {"application/json", "text/xml"})
 	public @ResponseBody GetOrdenadoresResponse obtenerOrdenadores() {
-		Type listType = new TypeToken<List<GetOrdenadoresResponse.Persona>>() {}.getType();
+		Type listType = new TypeToken<List<GetOrdenadoresResponse.Ordenador>>() {}.getType();
 		List<GetOrdenadoresResponse.Ordenador> ordenadores = 
 				modelMapper.map(ordenadorService.obtenerOrdenadores(), listType);
 
