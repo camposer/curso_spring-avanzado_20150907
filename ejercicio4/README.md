@@ -1,23 +1,12 @@
-#Ejercicio 3
+#Ejercicio 4
 
-Utilizando las clases implementadas en el ejercicio2:
+1. Crear un advice (tipo around) que deje una traza de log cuando se ejecute cualquier método del DAO de persona.
+	- Debe implementar una clase que gestione las trazas (logger) y otra que implemente el advice.
+	- El logger debe recibir como parámetro la ubicación del log
+	- El logger debe imprimir al menos nombre del método, parámetros y marca de tiempo
 
-1. Implementar el CRUD+ para Persona
-	- Implementar la lista (+) de personas (acciÃ³n: /persona/inicio.do)
-	- Implementar el agregar (C) de personas
-	- Implementar el eliminar (D) de personas. Si tiene ordenadores asociados, estos deben borrarse previamente de forma automÃ¡tica.
-	- Implementar el mostrar (R) de personas
-	- Implementar el modificar (U) de personas
+VER: http://www.mkyong.com/spring/spring-aop-examples-advice/
 
-	- Agregar al listado de personas, una columna que muestre los ordenadores que cada una tiene. Para ver este comportamiento tendrÃ¡ que agregar algunos ordenadores a la BD
+2. Implementar una anotación CustomLog que utilice el CustomLogger desarrollado en 1.
 
-NOTA: Para ejecutar: http://localhost:8080/ejercicio2/persona/inicio.do
-
-5. Implementar el CRUD+ para Ordenador. Seguir el mismo orden de implementaciÃ³n aplicado en CRUD+ de Persona.
-	- BD
-	- Modelo
-	- DAO
-	- Servicio
-	- Front
-
-6. Implementar API REST para Persona y Ordenador
+VER: http://blog.javaforge.net/post/76125490725/spring-aop-method-interceptor-annotation
