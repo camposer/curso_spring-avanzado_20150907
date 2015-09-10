@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import annotation.CustomLog;
 import dao.OrdenadorDao;
 import model.Ordenador;
 
@@ -30,6 +31,7 @@ public class OrdenadorServiceImpl implements OrdenadorService {
 		ordenadorDao.eliminar(id);
 	}
 
+	@CustomLog
 	@Override
 	public Ordenador obtenerOrdenador(Integer id) {
 		return ordenadorDao.obtener(id);

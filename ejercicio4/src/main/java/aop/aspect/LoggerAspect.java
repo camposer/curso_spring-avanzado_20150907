@@ -1,4 +1,4 @@
-package aop;
+package aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;

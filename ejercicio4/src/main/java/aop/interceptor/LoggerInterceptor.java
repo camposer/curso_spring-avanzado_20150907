@@ -1,4 +1,4 @@
-package advice;
+package aop.interceptor;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import service.LoggerService;
 
 @Component
-public class LoggerAdvice implements MethodInterceptor {
+public class LoggerInterceptor implements MethodInterceptor {
 	@Autowired
 	private LoggerService loggerService;
 

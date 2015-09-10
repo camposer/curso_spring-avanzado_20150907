@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import service.PersonaService;
 
 @Configuration
-@EnableAspectJAutoProxy // Activa aspectos
+@EnableAspectJAutoProxy(proxyTargetClass = true) // Activa aspectos
 public class AopConfig {
 	@Autowired
 	private PersonaService personaService;
@@ -18,7 +18,8 @@ public class AopConfig {
 	public ProxyFactoryBean personaServiceProxy() {
 		ProxyFactoryBean proxy = new ProxyFactoryBean();
 		proxy.setTarget(personaService);
-		proxy.setInterceptorNames("loggerAdvice");
+		proxy.setInterceptorNames("loggerInterceptor");
 		return proxy;
 	}
+	
 }
