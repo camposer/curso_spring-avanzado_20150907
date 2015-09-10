@@ -8,6 +8,4 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
 	<context:annotation-config/>
 	<context:component-scan base-package="config"/>
-	<context:component-scan base-package="dao"/>
-	<context:component-scan base-package="service"/>
 </beans>

@@ -1,5 +1,6 @@
 package web.controller;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -26,7 +27,7 @@ import web.validator.OrdenadorFormValidator;
 public class OrdenadorController {
 	private static final String RUTA_JSP = "/WEB-INF/jsp/ordenador/inicio.jsp";
 	
-	@Autowired
+	@Resource(name = "personaServiceProxy")
 	private PersonaService personaService;
 	@Autowired
 	private OrdenadorService ordenadorService;

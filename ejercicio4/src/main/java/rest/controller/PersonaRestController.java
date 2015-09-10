@@ -4,6 +4,8 @@ import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ import service.PersonaService;
 @RestController
 @RequestMapping("/personas*")
 public class PersonaRestController {
-	@Autowired
+	@Resource(name = "personaServiceProxy")
 	private PersonaService personaService;
 	@Autowired
 	private ModelMapper modelMapper;

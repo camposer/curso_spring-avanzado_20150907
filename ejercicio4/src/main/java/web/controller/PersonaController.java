@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -29,7 +30,7 @@ import web.validator.PersonaFormValidator;
 public class PersonaController {
 	public static String RUTA_JSP = "/WEB-INF/jsp/persona/inicio.jsp";
 	
-	@Autowired
+	@Resource(name = "personaServiceProxy")
 	private PersonaService personaService;
 	@Autowired
 	private ModelMapper modelMapper;
