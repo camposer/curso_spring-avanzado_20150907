@@ -31,6 +31,8 @@ Curso de Spring Avanzado
 	- https://github.com/camposer/curso_springmvc
 - REST-ful URI design
 	- http://blog.2partsmagic.com/restful-uri-design/
+- Content Negotiation using Spring MVC
+	- https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc
 - Curso de Testing (con Spring)
 	- https://github.com/camposer/curso_testing
 	- http://www.captaindebug.com/2012/08/using-spring-profiles-and-java.html#.Ve6-ybOvBxB

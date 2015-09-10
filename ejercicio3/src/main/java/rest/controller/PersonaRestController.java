@@ -7,6 +7,7 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +39,12 @@ public class PersonaRestController {
 		binder.registerCustomEditor(Date.class, dateEditor);
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	/*
+	 * GET /personas
+	 * Accept: application/json
+	 */
+	@RequestMapping(method = RequestMethod.GET,
+			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody GetPersonasResponse obtenerPersonas() {
 		Type listType = new TypeToken<List<GetPersonasResponse.Persona>>() {}.getType();
 		List<GetPersonasResponse.Persona> personas = 
@@ -47,18 +53,42 @@ public class PersonaRestController {
 		return new GetPersonasResponse(personas);
 	}
 	
+	/*
+	 * DELETE /personas/1
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void eliminar(@PathVariable Integer id) {
 		personaService.eliminarPersona(id);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	/*
+	 * POST /personas
+	 * Content-Type: application/json
+	 * {
+	 * "nombre": "uno",
+	 * "apellido": "uno",
+	 * "fechaNacimiento": 2000
+	 * }
+	 */
+	@RequestMapping(method = RequestMethod.POST,
+			consumes = "application/json")
 	public void agregar(@RequestBody PostPersonaRequest request) {
 		Persona p = modelMapper.map(request, Persona.class);
 		personaService.agregarPersona(p);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	/*
+	 * PUT /personas/1
+	 * Content-Type: application/json
+	 * {
+	 * "nombre": "uno",
+	 * "apellido": "uno",
+	 * "fechaNacimiento": 2000
+	 * }
+	 */
+	@RequestMapping(value = "/{id}", 
+			method = RequestMethod.PUT,
+			consumes = "application/json")
 	public void modificar(
 			@PathVariable Integer id,
 			@RequestBody PutPersonaRequest request) {
